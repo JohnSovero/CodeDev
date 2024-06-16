@@ -1,0 +1,194 @@
+Administrador@App01:~/mern-stack-app$ history
+    1  ps -ef | grep mongo
+    2  mongod
+    3  node -v
+    4  npm install mongodb
+    5  sudo apt update
+    6  sudo apt install nodejs
+    7  node -v
+    8  sudo apt install npm
+    9  sudo apt update
+   10  sudo apt install npm
+   11  node -v
+   12  npm install mongodb
+   13  ls
+   14  curl -sL https://deb.nodesource.com/setup_16.x -o /tmp/nodesource_setup.sh
+   15  cd ~
+   16  nano /tmp/nodesource_setup.sh
+   17  sudo bash /tmp/nodesource_setup.sh
+   18  sudo apt install nodejs
+   19  node -v
+   20  npm install mongodb
+   21  ls
+   22  sudo nano app.js
+   23  node app.js
+   24  sudo nano app.js
+   25  node app.js
+   26  sudo nano app.js
+   27  node app.js
+   28  sudo nano app.js
+   29  node app.js
+   30  sudo nano app.js
+   31  node app.js
+   32  sudo nano app.js
+   33  sudo nano app2.js
+   34  node app2.js
+   35  npm install express ejs
+   36  node app2.js
+   37  sudo nano app2.js
+   38  ls
+   39  mkdir views
+   40  cd views
+   41  sudo nano index.ejs
+   42  cd ..
+   43  node app.js
+   44  node app2.js
+   45  sudo nano app2.js
+   46  node app2.js
+   47  sudo nano app2.js
+   48  node app2.js
+   49  sudo nano app2.js
+   50  node app2.js
+   51  ls
+   52  mkdir codedev
+   53  ls
+   54  mv views codedev
+   55  ls
+   56  mv app2.js codedev
+   57  mv package-lock.json codedev/
+   58  mv package.json codedev/
+   59  ls
+   60  mv node_modules/ codedev/
+   61  ls
+   62  cd codedev
+   63  ls
+   64  node app2.js
+   65  ls
+   66  rm node_modules/
+   67  rm -r node_modules/
+   68  ls
+   69  rm -r package.json
+   70  ls
+   71  rm -r package-lock.json
+   72  npm install express mongodb ejs
+   73  sudo nano package
+   74  sudo nano package.json
+   75  ls
+   76  node app2.js
+   77  rm -r node_modules/
+   78  rm -r package
+   79  rm -r package-lock.json
+   80  rm -r package.json
+   81  npm init -y
+   82  ls
+   83  rm -r package.json
+   84  ls
+   85  npm init -y
+   86  npm install express mongodb ejs
+   87  sudo nano app2.js
+   88  sudo nano test.js
+   89  node test.js
+   90  sudo nano test.js
+   91  node test.js
+   92  sudo nano test.js
+   93  node test.js
+   94  sudo nano app2.js
+   95  node --trace-warnings app2.js
+   96  sudo nano app2.js
+   97  cd ..
+   98  ls
+   99  sudo nano app.js
+  100  nano app.js
+  101  node app.js
+  102  sudo nano app.js
+  103  npm install mongodb
+  104  node app.js
+  105  ls
+  106  cd codedev
+  107  ls
+  108  node test.js
+  109  sudo nano test.js
+  110  nano app2.js
+  111  cd ..
+  112  ls
+  113  nano app.js
+  114  sudo nano app.js
+  115  nano app.js
+  116  node app.js
+  117  sudo nano app.js
+  118  node app.js
+  119  sudo nano app.js
+  120  mongodb
+  121  sudo nano app2.js
+  122  ls
+  123  cd codedev
+  124  sudo nano app2.js
+  125  ls
+  126  sudo nano views/index.ejs
+  127  sudo mkdir routes
+  128  cd routes
+  129  sudo nano test.js
+  130  cd ..
+  131  ls
+  132  rm -r views
+  133  ls
+  134  rm test.js
+  135  ls
+  136  cd routes
+  137  ñs
+  138  ls
+  139  sudo nano students.js
+  140  sudo nano studentsRoutes.js
+  141  sudo nano ap
+  142  cd ..
+  143  sudo nano app2.js
+  144  ls
+  145  cd ..
+  146  ls
+  147  sudo nano app.js
+  148  node app.js
+  149  sudo nano app.js
+  150  node app.js
+  151  sudo nano app.js
+  152  node app.js
+  153  sudo nano app.js
+  154  cd codedev
+  155  ls
+  156  sudo nano app2.js
+  157  cd ..
+  158  ls
+  159  rm node_modelus
+  160  rm -r node_mode
+  161  rm -r node_modules/
+  162  ls
+  163  rm -r package
+  164  rm -r package-lock.json
+  165  rm -r package.json
+  166  ls
+  167  mkdir mern-stack-app
+  168  cd mern-stack-app
+  169  npm init -y
+  170  ls
+  171  nano package.json
+  172  npm install express mongoose cors
+  173  sudo nano server.js
+  174  ls
+  175  cd ..
+  176  cd mern-stack-app/
+  177  ls
+  178  npx create-react-app client
+  179  cd client
+  180  npm install axios
+  181  ls
+  182  cd ..
+  183  ls
+  184  cd ..
+  185  ls
+  186  cd mern-stack-app/
+  187  ls
+  188  sudo nano server.js
+  189  node server.js
+  190  sudo nano server.js
+  191  node server.js
+  192  sudo node server.js
+  193  history

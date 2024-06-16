@@ -1,0 +1,34 @@
+1. srv_db:
+source: https://www.digitalocean.com/community/tutorials/how-to-install-mongodb-on-ubuntu-20-04
+open port mongodb 27017 in azure
+
+curl -fsSL https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
+apt-key list
+echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+sudo apt update
+sudo apt install mongodb-org
+sudo systemctl start mongod.service
+mongo --eval 'db.runCommand({ connectionStatus: 1 })'
+sudo systemctl restart mongod
+sudo nano /etc/mongod.conf
+- bindIp: 0.0.0.0
+
+2. srv_app
+source: https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04
+open port http 80 in azure
+
+cd ~
+curl -sL https://deb.nodesource.com/setup_16.x -o /tmp/nodesource_setup.sh
+
+sudo nano /tmp/nodesource_setup.sh
+sudo bash /tmp/nodesource_setup.sh
+sudo apt install nodejs
+sudo apt install npm
+
+node -v
+
+npm init -y
+npm install express mongoose cors
+
+sudo nano server.js
+sudo node server.js

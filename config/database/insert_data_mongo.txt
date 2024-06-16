@@ -1,0 +1,178 @@
+use codedev;
+
+// Collection: categories
+db.categories.insertMany([
+    { "_id": ObjectId(), "name": "Web development" },
+    { "_id": ObjectId(), "name": "Data Science" },
+    { "_id": ObjectId(), "name": "Mobile development" }
+]);
+
+// Collection: students
+db.students.insertMany([
+    { "_id": ObjectId(), "name": "John", "last_name": "Sovero", "email": "john@hotmail.com", "phone": "123456789", "password": "password456" },
+    { "_id": ObjectId(), "name": "Renzo", "last_name": "Espiritu", "email": "renzo@hotmail.com", "phone": "987654321", "password": "password123" },
+    { "_id": ObjectId(), "name": "Axel", "last_name": "Almeida", "email": "axel@hotmail.com", "phone": "987654321", "password": "password789" }
+]);
+
+// Collection: mentors
+db.mentors.insertMany([
+    { "_id": ObjectId(), "name": "Luis", "last_name": "Vives", "email": "luis@hotmail.com", "speciality": "Software Development", "modality": "Online", "price": 100 },
+    { "_id": ObjectId(), "name": "Luis", "last_name": "Poma", "email": "poma@hotmail.com", "speciality": "Database Management", "modality": "In-person", "price": 150 },
+    { "_id": ObjectId(), "name": "Johnny", "last_name": "Reyes", "email": "johnny@hotmail.com", "speciality": "Data Scientist", "modality": "Hybrid", "price": 200 }
+]);
+
+// Collection: courses
+db.courses.insertMany([
+    { 
+        _id: ObjectId(), 
+        name: "SQL", 
+        description: "Learn SQL from scratch", 
+        course_price: 200, 
+        categories_id: db.categories.findOne({ "name": "Data Science" })._id, 
+        image: "sql.png", 
+        mentors_id: db.mentors.findOne({ "last_name": "Poma" })._id
+    },
+    { 
+        _id: ObjectId(), 
+        name: "Data Science with R", 
+        description: "Introduction to data science using R", 
+        course_price: 150, 
+        categories_id: db.categories.findOne({ "name": "Data Science" })._id,
+        image: "datascience.png", 
+        mentors_id: db.mentors.findOne({ "name": "Johnny" })._id
+    }
+]);
+
+db.resources.insertMany([
+    { 
+        _id: ObjectId(), 
+        title: "Python Basics", 
+        description: "Basic concepts of Python programming", 
+        content: "Content of Python Basics" 
+    },
+    { 
+        _id: ObjectId(), 
+        title: "SQL Fundamentals", 
+        description: "Introduction to SQL and database management", 
+        content: "Content of SQL Fundamentals" 
+    }
+]);
+
+// Collection: modules
+db.modules.insertMany([
+    {
+        _id: ObjectId(),
+        resources_id: db.resources.findOne({ "title": "Python Basics" })._id,
+        courses_id: db.courses.findOne({ "name": "SQL" })._id,
+        title: "Module 1",
+        name: "Introduction to Python",
+        description: "First module of Python course"
+    },
+    {
+        _id: ObjectId(),
+        resources_id: db.resources.findOne({ "title": "SQL Fundamentals" })._id,
+        courses_id: db.courses.findOne({ "name": "Data Science with R" })._id,
+        title: "Module 2",
+        name: "Introduction to Data Science",
+        description: "First module of Data Science course"
+    }
+]);
+
+db.payment_methods.insertMany([
+    { 
+        _id: ObjectId(), 
+        name: "Credit Card", 
+        active: true 
+    },
+    { 
+        _id: ObjectId(),
+        name: "PayPal", 
+        active: true 
+    },
+    { 
+        _id: ObjectId(),
+        name: "Cryptocurrency", 
+        active: false 
+    }
+]);
+
+// Colección: comments
+db.comments.insertMany([
+    {
+        id: ObjectId(),
+        students_id: db.students.findOne({ "name": "John" })._id,
+        courses_id: db.courses.findOne({ "name": "SQL" })._id,
+        title: "Great Course",
+        description: "I learned a lot from this course",
+        date: new Date("2024-01-01T00:00:00Z")
+    },
+    {
+        id: ObjectId(),
+        students_id: db.students.findOne({ "name": "Renzo" })._id,
+        courses_id: db.courses.findOne({ "name": "Data Science with R" })._id,
+        title: "Very Informative",
+        description: "Highly recommended",
+        date: new Date("2024-01-02T00:00:00Z")
+    }
+]);
+
+
+// Colección: inscriptions
+db.inscriptions.insertMany([
+    { 
+	id: ObjectId(),
+        students_id: db.students.findOne({ "name": "John" })._id, 
+        courses_id: db.courses.findOne({ "name": "SQL" })._id, 
+        status: "Complete"
+    },
+    { 
+	id: ObjectId(),
+        students_id: db.students.findOne({ "name": "Renzo" })._id, 
+        courses_id: db.courses.findOne({ "name": "Data Science with R" })._id, 
+        status: "In Progress"
+    }
+]);
+
+// Collection: mentorship
+db.mentorship.insertMany([
+    { 
+        _id: ObjectId(), 
+        mentors_id: db.mentors.findOne({ "last_name": "Vives" })._id, 
+        topic: "Spring boot fundamentals", 
+        type: "One-on-One", 
+        start_date: ISODate("2024-02-01T00:00:00Z"), 
+        end_date: ISODate("2024-03-01T00:00:00Z")
+    },
+    { 
+        _id: ObjectId(), 
+        mentors_id: db.mentors.findOne({ "last_name": "Poma" })._id, 
+        topic: "SQL Triggers", 
+        type: "Group", 
+        start_date: ISODate("2024-02-15T00:00:00Z"), 
+        end_date: ISODate("2024-03-15T00:00:00Z")
+    }
+]);
+
+// Colección: sessions
+db.sessions.insertMany([
+    { students_id: db.students.findOne({ "name": "John" })._id, mentorship_id: db.mentorship.findOne({ "topic": "Spring boot fundamentals" })._id, url: 'http://mentorship-session-1.com' },
+    { students_id: db.students.findOne({ "name": "Renzo" })._id, mentorship_id: db.mentorship.findOne({ "topic": "SQL Triggers" })._id, url: 'http://mentorship-session-2.com' }
+]);
+
+// Colección: transactions
+db.transactions.insertMany([
+    {
+        _id: ObjectId(),
+        payment_date: ISODate("2024-01-15T00:00:00Z"),
+        inscriptions_students_id: db.students.findOne({ "name": "John" })._id,
+        inscriptions_courses_id: db.courses.findOne({ "name": "SQL" })._id,
+        payment_methods_id: db.payment_methods.findOne({ "name": "Credit Card" })._id
+    },
+    {
+        _id: ObjectId(),
+        payment_date: ISODate("2024-01-20T00:00:00Z"),
+        inscriptions_students_id: db.students.findOne({ "name": "Renzo" })._id,
+        inscriptions_courses_id: db.courses.findOne({ "name": "Data Science with R" })._id,
+        payment_methods_id: db.payment_methods.findOne({ "name": "PayPal" })._id
+    }
+]);
