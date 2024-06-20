@@ -9,7 +9,7 @@ services:
     links:
       - database
     environment:
-      - MONGODB_HOST=20.55.56.229
+      - MONGODB_HOST=20.51.204.0
       - MONGODB_PORT=27017
       - MONGODB_DB=codedev
   database:
