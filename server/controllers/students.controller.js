@@ -3,15 +3,15 @@ const studentsCtrl = {}
 const student = require('../models/students')
 
 // Get
-studentsCtrl.renderStudents = async (req, res) => {
+studentsCtrl.getStudents = async (req, res) => {
     const students = await student.find();
     res.json(students);
 }
 
 // Get by id
-studentsCtrl.renderStudent = async (req, res) => {
+studentsCtrl.getStudent = async (req, res) => {
     try{
-        const getstudent = await student.findOne({ id: req.params.id });
+        const getstudent = await student.findById(req.params.id);
         if (!getstudent) {
             return res.status(404).json({ message: 'Student not found' });
         }
@@ -22,9 +22,9 @@ studentsCtrl.renderStudent = async (req, res) => {
 }
 
 // Post
-studentsCtrl.createNewStudent = async (req, res) => {
+studentsCtrl.createStudent = async (req, res) => {
     try{
-        const { id, name, last_name, email, phone, password } = req.body;
+        const {id, name, last_name, email, phone, password } = req.body;
         const newStudent = new student({ id, name, last_name, email, phone, password });
         await newStudent.save();
         res.status(201).json({ message: 'Student created successfully' });
@@ -36,7 +36,7 @@ studentsCtrl.createNewStudent = async (req, res) => {
 // Update
 studentsCtrl.putStudent = async (req, res) => {
     const { name, last_name, email, phone, password } = req.body;
-    const updtstudent = await student.findOneAndUpdate( {id : req.params.id }, { name, last_name, email, phone, password } , {new : true});
+    const updtstudent = await student.findByIdAndUpdate( req.params.id, { name, last_name, email, phone, password } , {new : true});
     if (!updtstudent) {
         return res.status(404).json({ message: 'Student not found' });
     }
@@ -46,7 +46,7 @@ studentsCtrl.putStudent = async (req, res) => {
 // Delete
 studentsCtrl.deleteStudent = async (req, res) => {
     try{
-        await student.findOneAndDelete({ id: req.params.id });
+        await student.findByIdAndDelete(req.params.id);
         res.json({message: 'Student deleted successfully'});
     } catch (error) {
         res.status(500).json({ message: 'Error deleting student', error });

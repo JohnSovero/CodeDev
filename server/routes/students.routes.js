@@ -2,20 +2,20 @@ const { Router } = require('express');
 const router = Router();
 
 const {
-    renderStudents,
-    renderStudent,
-    createNewStudent,
+    getStudents,
+    getStudent,
+    createStudent,
     putStudent,
     deleteStudent } = require('../controllers/students.controller');
 
 // Get
-router.get('/students', renderStudents);
+router.get('/students', getStudents);
 
 // Get by id
-router.get('/students/:id', renderStudent);
+router.get('/students/:id', getStudent);
 
 // Post
-router.post('/students', createNewStudent);
+router.post('/students', createStudent);
 
 // Update
 router.put('/students/:id', putStudent);
