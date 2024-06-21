@@ -3,50 +3,42 @@ const categoriesCtrl = {}
 const category = require('../models/category');
 
 // Get
-categoriesCtrl.renderCategories = async (req, res) => {
+categoriesCtrl.getCategories = async (req, res) => {
     const categories = await category.find();
     res.json(categories);
 }
 
 // Get by id
-categoriesCtrl.renderCategory = async (req, res) => {
+categoriesCtrl.getCategory = async (req, res) => {
     try{
-        const getcategory = await category.findOne({ id: req.params.id });
+        const getcategory = await category.findById(req.params.id);
         if (!getcategory) {
             return res.status(404).json({ message: 'Category not found' });
         }
         res.json(getcategory);
-    }catch (error) {
+    } catch (error) {
         res.status(500).json({ message: 'Error getting category', error });
     }
 }
 
 
 // Post
-categoriesCtrl.renderCategoryForm = (req, res) => {
-    res.send('category add');
-}
-
-categoriesCtrl.createNewCategory = async (req, res) => {
+categoriesCtrl.createCategory = async (req, res) => {
     try{
         const { id, name } = req.body;
         const newCategory = new category({ id, name});
         await newCategory.save(); 
-        res.status(201).json({ message: 'Category created successfully', category: newCategory });
+        res.status(201).json({ message: 'Category created successfully'});
     } catch (error) {
         res.status(500).json({ message: 'Error creating category', error });
     }
 }
 
 // Update
-categoriesCtrl.renderPutForm = (req, res) => {
-    res.send('put category');
-}
-
 categoriesCtrl.putCategory = async (req, res) => {
     try{
         const { name } = req.body;
-        const updtcategory = await category.findOneAndUpdate( {id : req.params.id }, { name } , {new : true});
+        const updtcategory = await category.findByIdAndUpdate( req.params.id , { name } , {new : true});
         if (!updtcategory) {
             return res.status(404).json({ message: 'Category not found' });
         }
@@ -58,8 +50,7 @@ categoriesCtrl.putCategory = async (req, res) => {
 // Delete
 categoriesCtrl.deleteCategory = async (req, res) => {
     try{
-        const { id } = req.params;
-        const dltCategory = await category.findOneAndDelete({ id: id });
+        const dltCategory = await category.findByIdAndDelete(req.params.id);
         if (!dltCategory) {
             return res.status(404).json({ message: 'Category not found' });
         }

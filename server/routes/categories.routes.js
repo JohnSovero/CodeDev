@@ -2,26 +2,22 @@ const { Router } = require('express');
 const router = Router();
 
 const { 
-    renderCategoryForm, 
-    renderCategories,
-    renderCategory,
-    createNewCategory, 
-    renderPutForm, 
+    getCategories, 
+    getCategory,
+    createCategory, 
     putCategory, 
     deleteCategory } = require('../controllers/categories.controller');
 
 // Get
-router.get('/categories', renderCategories);
+router.get('/categories', getCategories);
 
 // Get by id
-router.get('/categories/:id', renderCategory);
+router.get('/categories/:id', getCategory);
 
 // Post
-router.get('/categories/post', renderCategoryForm);
-router.post('/categories', createNewCategory);
+router.post('/categories', createCategory);
 
 // Update
-router.get('/categories/update/:id', renderPutForm);
 router.put('/categories/:id', putCategory);
 
 // Delete
